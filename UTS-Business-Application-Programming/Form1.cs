@@ -16,5 +16,17 @@ namespace UTS_Business_Application_Programming
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void admin_login_link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            admin_login_page objalp = new admin_login_page();
+            objalp.Show();
+        }
     }
 }
