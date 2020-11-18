@@ -65,13 +65,30 @@
     <Compile Include="admin_setting.Designer.cs">
       <DependentUpon>admin_setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="connection.cs" />
+    <Compile Include="customer_signup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customer_signup.Designer.cs">
+      <DependentUpon>customer_signup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="helper.cs" />
+    <Compile Include="customer_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customer_login.Designer.cs">
+      <DependentUpon>customer_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="ImageServices.cs" />
+    <Compile Include="kiyoDataSet.cs">
+      <DependentUpon>kiyoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="kiyoDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +99,12 @@
     </Compile>
     <Compile Include="menu_setting.Designer.cs">
       <DependentUpon>menu_setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="order_page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="order_page.Designer.cs">
+      <DependentUpon>order_page.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,11 +117,20 @@
     <EmbeddedResource Include="admin_setting.resx">
       <DependentUpon>admin_setting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="customer_login.resx">
+      <DependentUpon>customer_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="customer_signup.resx">
+      <DependentUpon>customer_signup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="menu_setting.resx">
       <DependentUpon>menu_setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="order_page.resx">
+      <DependentUpon>order_page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

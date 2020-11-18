@@ -1,20 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace UTS_Business_Application_Programming
 {
-    public class helper
+    static class Helper
     {
-        static void press_only_nums(object sender, KeyPressEventArgs e)
+        internal static string SHA256ComputeHash(string rawData)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
+            string result = "";
+            try
             {
-                e.Handled = true;
+                using (SHA256 sha = SHA256.Create())
+                {
+                    byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in bytes)
+                    {
+                        sb.Append(item.ToString("X2"));
+                    }
+                    result = sb.ToString();
+                }
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            return result;
         }
     }
 }

@@ -28,5 +28,12 @@ namespace UTS_Business_Application_Programming
             admin_login_page objalp = new admin_login_page();
             objalp.Show();
         }
+
+        private void order_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            customer_login objcustlg = new customer_login();
+            objcustlg.Show();
+        }
     }
 }

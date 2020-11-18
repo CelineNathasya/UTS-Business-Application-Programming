@@ -41,6 +41,7 @@
             this.order_button.TabIndex = 0;
             this.order_button.Text = "Order Here";
             this.order_button.UseVisualStyleBackColor = true;
+            this.order_button.Click += new System.EventHandler(this.order_button_Click);
             // 
             // admin_login_link
             // 
