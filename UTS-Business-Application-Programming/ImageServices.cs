@@ -16,7 +16,7 @@ namespace help
     public class ImageServices
     {
         private string imageUrl = null;
-        private string targetDirectory = @"D:\celine UPH\pelajaran\term7\UTS-Business-Application-Programming\UTS-Business-Application-Programming\resources\image\";
+        private string targetDirectory = @"D:resources\image\";
 
         public string createdFileName { get; set; }
 

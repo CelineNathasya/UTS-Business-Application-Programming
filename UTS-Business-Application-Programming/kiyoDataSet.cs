@@ -4,6 +4,10 @@
 
     partial class kiyoDataSet
     {
+        partial class BillsDataTable
+        {
+        }
+
         partial class CustomersDataTable
         {
         }

@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.table_cbbox = new System.Windows.Forms.ComboBox();
             this.tablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kiyoDataSet = new UTS_Business_Application_Programming.kiyoDataSet();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,16 +42,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kiyoDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(185, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Select table:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -62,16 +50,6 @@
             this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
-            // 
-            // table_cbbox
-            // 
-            this.table_cbbox.DataSource = this.tablesBindingSource;
-            this.table_cbbox.DisplayMember = "table_id";
-            this.table_cbbox.FormattingEnabled = true;
-            this.table_cbbox.Location = new System.Drawing.Point(333, 86);
-            this.table_cbbox.Name = "table_cbbox";
-            this.table_cbbox.Size = new System.Drawing.Size(121, 24);
-            this.table_cbbox.TabIndex = 2;
             // 
             // tablesBindingSource
             // 
@@ -142,9 +120,7 @@
             this.Controls.Add(this.password_txtbox);
             this.Controls.Add(this.name_txtbox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.table_cbbox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "customer_login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.customer_login_Load);
@@ -156,10 +132,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox table_cbbox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox name_txtbox;
         private System.Windows.Forms.TextBox password_txtbox;

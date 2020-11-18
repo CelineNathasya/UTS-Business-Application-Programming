@@ -21,15 +21,15 @@ namespace UTS_Business_Application_Programming
         private void order_page_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'kiyoDataSet.Orders' table. You can move, or remove it, as needed.
-            this.ordersTableAdapter.Fill(this.kiyoDataSet.Orders);
+            ////this.ordersTableAdapter.Fill(this.kiyoDataSet.Orders);
             // TODO: This line of code loads data into the 'kiyoDataSet.Menus' table. You can move, or remove it, as needed.
             this.menusTableAdapter.Fill(this.kiyoDataSet.Menus);
             LoadToComboBox();
 
-            
+
 
         }
-        
+
         private void connection()
         {
             string connString = @"Data Source = DESKTOP - 43407LQ\SQLEXPRESS; Initial Catalog = kiyo; Integrated Security = True";
@@ -77,8 +77,8 @@ namespace UTS_Business_Application_Programming
                         }
                     }
                 }
-                    
-                
+
+
             }
             catch (Exception)
             {
@@ -94,21 +94,21 @@ namespace UTS_Business_Application_Programming
                 SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-43407LQ\SQLEXPRESS;Initial Catalog=kiyo;Integrated Security=True");
                 conn.Open();
                 var cmd = new SqlCommand();
-                    
-                    cmd.Connection = conn;
-                        cmd.CommandText = @"Select menu_id,menu_name From menus";
-                        using (var reader = cmd.ExecuteReader())
+
+                cmd.Connection = conn;
+                cmd.CommandText = @"Select menu_id,menu_name From menus";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
                         {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    comboSource.Add(reader["menu_id"].ToString(), reader["menu_name"].ToString());
-                                }
-                            }
+                            comboSource.Add(reader["menu_id"].ToString(), reader["menu_name"].ToString());
                         }
-                    
-                
+                    }
+                }
+
+
             }
             catch (Exception)
             {
@@ -149,37 +149,9 @@ namespace UTS_Business_Application_Programming
                     showData(((KeyValuePair<string, string>)comboBox1.SelectedItem).Key.ToString());
 
             }
+        }
 
-                //string id = comboBox1.SelectedItem.ToString();
 
-                //MessageBox.Show(id);
-                //int qty = Convert.ToInt32(qty_txtbox.Text.Trim());
-
-                //SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-43407LQ\SQLEXPRESS;Initial Catalog=kiyo;Integrated Security=True");
-                //conn.Open();
-                //var cmd = new SqlCommand();
-                //cmd.Connection = conn;
-                //cmd.CommandText = @"Select menus.menu_id, menus.menu_name,menus.menu_price From menus 
-                //INNER JOIN orders ON menus.menu_id = orders.menu_id Where orders.menu_id = " ;
-
-                //using (var reader = cmd.ExecuteReader())
-                //{
-                //    if (reader.HasRows)
-                //    {
-                //        while (reader.Read())
-                //        {
-                //            this.dataGridView2.Rows.Add(new string[] {
-                //                          reader["menu_id"].ToString(),
-                //                          reader["menu_name"].ToString(),
-                //                          reader["menu_price"].ToString(),
-                //                          Convert.ToString(Convert.ToInt32(reader["menu_price"].ToString()) * Convert.ToInt32(qty_txtbox.Text))
-                //                     });
-                //        }
-                //    }
-                //}
-            }
-
-        
         private void qty_txtbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -212,6 +184,72 @@ namespace UTS_Business_Application_Programming
             {
                 MessageBox.Show("No menu selected, please select", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void table_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        string id_order;
+        private void order_btn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.Rows.Count.ToString().Equals("0"))
+            {
+                MessageBox.Show("Please select your menu", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (table_txt.Text.Equals(""))
+                {
+                    MessageBox.Show("Please input table number", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-43407LQ\SQLEXPRESS;Initial Catalog=kiyo;Integrated Security=True");
+                    conn.Open();
+                    var cmd = new SqlCommand();
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = @"Insert Into Orders (order_total,order_date,table_no) Values (@total,@date,@table)";
+                    cmd.Parameters.Clear();
+
+                    cmd.Parameters.AddWithValue("@total", total_lbl.Text);
+                    cmd.Parameters.AddWithValue("@date", DateTime.Today);
+                    cmd.Parameters.AddWithValue("@table", table_txt.Text.Trim());
+                    cmd.ExecuteNonQuery();
+
+
+                    cmd.CommandText = @"SELECT TOP 1 * FROM orders ORDER BY order_id DESC";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                id_order = reader["order_id"].ToString();
+                            }
+                        }
+                        else
+                        {
+                            id_order = "1";
+                        }
+                    }
+
+                    MessageBox.Show("Order completed, please proceed to payment", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Form1 objfrm = new Form1();
+                    this.Hide();
+                    objfrm.Show();
+                   
+
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            favourite_menu objfv = new favourite_menu();
+            objfv.Show();
         }
     }
 }

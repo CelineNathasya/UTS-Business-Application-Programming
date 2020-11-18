@@ -48,14 +48,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new UTS_Business_Application_Programming.kiyoDataSetTableAdapters.OrdersTableAdapter();
             this.label5 = new System.Windows.Forms.Label();
             this.total_lbl = new System.Windows.Forms.Label();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.table_txt = new System.Windows.Forms.TextBox();
+            this.order_btn = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kiyoDataSet)).BeginInit();
@@ -243,6 +247,34 @@
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 125;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            this.Qty.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.Width = 125;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.MinimumWidth = 6;
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.Width = 125;
+            // 
             // ordersBindingSource
             // 
             this.ordersBindingSource.DataMember = "Orders";
@@ -272,39 +304,52 @@
             this.total_lbl.TabIndex = 11;
             this.total_lbl.Text = "0";
             // 
-            // Subtotal
+            // label6
             // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.MinimumWidth = 6;
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.Width = 125;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(750, 561);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Table No:";
             // 
-            // Price
+            // table_txt
             // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
+            this.table_txt.Location = new System.Drawing.Point(831, 563);
+            this.table_txt.Name = "table_txt";
+            this.table_txt.Size = new System.Drawing.Size(48, 22);
+            this.table_txt.TabIndex = 13;
+            this.table_txt.TextChanged += new System.EventHandler(this.table_txt_TextChanged);
             // 
-            // Qty
+            // order_btn
             // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            this.Qty.Width = 125;
+            this.order_btn.Location = new System.Drawing.Point(1118, 536);
+            this.order_btn.Name = "order_btn";
+            this.order_btn.Size = new System.Drawing.Size(125, 48);
+            this.order_btn.TabIndex = 14;
+            this.order_btn.Text = "Order";
+            this.order_btn.UseVisualStyleBackColor = true;
+            this.order_btn.Click += new System.EventHandler(this.order_btn_Click);
             // 
-            // ID
+            // button3
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 125;
+            this.button3.Location = new System.Drawing.Point(557, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(120, 31);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "See Favourite";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // order_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1319, 639);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.order_btn);
+            this.Controls.Add(this.table_txt);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.total_lbl);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView2);
@@ -360,5 +405,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox table_txt;
+        private System.Windows.Forms.Button order_btn;
+        private System.Windows.Forms.Button button3;
     }
 }
